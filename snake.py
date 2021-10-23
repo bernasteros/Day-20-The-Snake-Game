@@ -25,3 +25,19 @@ class Snake():
             new_y = self.body[tile_num - 1].ycor()
             self.body[tile_num].goto(new_x, new_y)
         self.body[0].forward(MOVE_DISTANCE)
+
+    def up(self):
+        if self.body[0].heading() != 270:
+            self.body[0].setheading(90)
+
+    def down(self):
+        if self.body[0].heading() != 90:
+            self.body[0].setheading(270)
+
+    def left(self):
+        if self.body[0].heading() != 0:
+            self.body[0].setheading(180)
+
+    def right(self):
+        if self.body[0].heading() != 180:
+            self.body[0].setheading(0)
