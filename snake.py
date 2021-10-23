@@ -4,11 +4,16 @@ from turtle import Turtle
 # Helps to change things fast, without searching the code
 
 MOVE_DISTANCE = 20
+UP = 90
+DOWN = 270
+LEFT = 180
+RIGHT = 0
 
 class Snake():
     def __init__(self):
         self.body = []
         self.new_body()
+        self.head = self.body[0]
 
     def new_body(self):
         for initial_square in range(0, 3):
@@ -24,20 +29,20 @@ class Snake():
             new_x = self.body[tile_num - 1].xcor()
             new_y = self.body[tile_num - 1].ycor()
             self.body[tile_num].goto(new_x, new_y)
-        self.body[0].forward(MOVE_DISTANCE)
+        self.head.forward(MOVE_DISTANCE)
 
     def up(self):
-        if self.body[0].heading() != 270:
-            self.body[0].setheading(90)
+        if self.head.heading() != DOWN:
+            self.head.setheading(UP)
 
     def down(self):
-        if self.body[0].heading() != 90:
-            self.body[0].setheading(270)
+        if self.head.heading() != UP:
+            self.head.setheading(DOWN)
 
     def left(self):
-        if self.body[0].heading() != 0:
-            self.body[0].setheading(180)
+        if self.head.heading() != RIGHT:
+            self.head.setheading(LEFT)
 
     def right(self):
-        if self.body[0].heading() != 180:
-            self.body[0].setheading(0)
+        if self.head.heading() != LEFT:
+            self.head.setheading(RIGHT)
