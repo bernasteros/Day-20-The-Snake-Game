@@ -38,6 +38,8 @@ while game_is_on:
         snake.add_part()
         score.count_up()
 
+    # TODO implement collision detection with own body
+
     if -300 < int(snake.head.position()[0]) < 300 and -300 < int(snake.head.position()[1]) < 300:
         continue
     else:

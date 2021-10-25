@@ -21,7 +21,7 @@ class Food(Turtle):
         self.goto(random_x, random_y)
         self.refresh()
 
-        # TODO Create Food as collision object on the road
+        # Create Food as collision object on the road
     def refresh(self):
         random_x = randint(-280, 280)
         random_y = randint(-280, 280)
