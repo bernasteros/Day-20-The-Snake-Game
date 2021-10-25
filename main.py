@@ -1,8 +1,10 @@
-import time
-import turtle
-from turtle import Screen, Turtle
+from turtle import Screen
 from snake import Snake
+from food import Food
 from time import sleep
+from score import Score
+
+border = (300, 300)
 
 screen = Screen()
 screen.setup(width=600, height=600)
@@ -13,6 +15,8 @@ screen.tracer(0)
 # Create a initial Snake with square-turtles (moved into class)
 
 snake = Snake()
+food = Food()
+score = Score()
 
 # Move the Snake
 
@@ -25,14 +29,22 @@ screen.onkey(snake.right, "Right")
 game_is_on = True
 while game_is_on:
     screen.update()
-    time.sleep(0.1)
-
+    sleep(0.1)
     snake.move()
 
-# TODO Create Food as collision object on the road
-# TODO Expand the Snake if it collides with food
-# TODO Scoreboard
-# TODO Game-Over Conditions
+    # collision with food and snake
+    if snake.head.distance(food) < 15:
+        food.refresh()
+        snake.add_part()
+        score.count_up()
+
+    if -300 < int(snake.head.position()[0]) < 300 and -300 < int(snake.head.position()[1]) < 300:
+        continue
+    else:
+        game_is_on = False
+
+snake.reset()
+score.game_over()
 
 
 
