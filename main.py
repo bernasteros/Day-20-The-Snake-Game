@@ -29,7 +29,7 @@ screen.onkey(snake.right, "Right")
 game_is_on = True
 while game_is_on:
     screen.update()
-    sleep(0.1)
+    sleep(0.5 - len(snake.body)/100)
     snake.move()
 
     # collision with food and snake
@@ -38,16 +38,19 @@ while game_is_on:
         snake.add_part()
         score.count_up()
 
-    # TODO implement collision detection with own body
-
-    if -300 < int(snake.head.position()[0]) < 300 and -300 < int(snake.head.position()[1]) < 300:
-        continue
+    if -300 < int(snake.head.position()[0]) < 300 \
+            and -300 < int(snake.head.position()[1]) < 300:
+        pass
     else:
         game_is_on = False
 
-snake.reset()
+    # slicing the body to separate the head
+    for part in snake.body[1:]:
+        print(snake.head.distance(part))
+        if snake.head.distance(part) < 10:
+            game_is_on = False
+        else:
+            pass
+
 score.game_over()
-
-
-
 screen.exitonclick()

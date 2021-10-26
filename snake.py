@@ -16,9 +16,8 @@ LEFT = 180
 RIGHT = 0
 
 
-class Snake(Turtle):
+class Snake():
     def __init__(self):
-        super(Snake, self).__init__()
         self.body = []
         self.new_body()
         self.head = self.body[0]
@@ -40,22 +39,23 @@ class Snake(Turtle):
         additional_square.penup()
 
         last_square_location = self.body[-1].position()
-        last_square_heading = self.body[-1].heading()
-        last_x = int(last_square_location[0])
-        last_y = int(last_square_location[1])
 
-        if last_square_heading == DOWN:
-            additional_square.setposition(last_x, last_y + 20)
-
-        elif last_square_heading == UP:
-            additional_square.setposition(last_x, last_y - 20)
-
-        elif last_square_heading == RIGHT:
-            additional_square.setposition(last_x - 20, last_y)
-
-        elif last_square_heading == LEFT:
-            additional_square.setposition(last_x + 20, last_y)
-
+        additional_square.setposition(last_square_location)
+#        last_square_heading = self.body[-1].heading()
+#        last_x = int(last_square_location[0])
+#        last_y = int(last_square_location[1])
+#
+#        if last_square_heading == DOWN:
+#            additional_square.setposition(last_x, last_y + 20)
+#
+#        elif last_square_heading == UP:
+#            additional_square.setposition(last_x, last_y - 20)
+#
+#        elif last_square_heading == RIGHT:
+#            additional_square.setposition(last_x - 20, last_y)
+#
+#        elif last_square_heading == LEFT:
+#            additional_square.setposition(last_x + 20, last_y)
         self.body.append(additional_square)
 
     def move(self):
