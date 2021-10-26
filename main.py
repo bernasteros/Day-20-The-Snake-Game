@@ -46,7 +46,6 @@ while game_is_on:
 
     # slicing the body to separate the head
     for part in snake.body[1:]:
-        print(snake.head.distance(part))
         if snake.head.distance(part) < 10:
             game_is_on = False
         else:
