@@ -28,8 +28,9 @@ screen.onkey(snake.right, "Right")
 
 game_is_on = True
 while game_is_on:
+    # display the updates on the screen
     screen.update()
-    sleep(0.5 - len(snake.body)/100)
+    sleep(0.1)
     snake.move()
 
     # collision with food and snake
