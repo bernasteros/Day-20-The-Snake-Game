@@ -1,4 +1,3 @@
-from os import remove as rm
 from turtle import Turtle
 
 STYLE = ('Courier', 20, 'bold')
@@ -28,6 +27,5 @@ class Score(Turtle):
         self.write("Game Over!\n Final Score:" + str(self.count), font=STYLE, align='center')
 
         if self.count > int(HIGH_SCORE):
-            rm("data.txt")
             with open("data.txt", mode="w") as new_high_score:
                 new_high_score.write(str(self.count))
